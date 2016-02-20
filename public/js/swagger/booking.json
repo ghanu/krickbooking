@@ -1,0 +1,380 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "This simple client provides interface to trigger krcikbooking",
+        "title": "Krickbooking APIS"
+    },
+    "basePath": "/stadiumbooking",
+    "tags": [
+        {
+            "name": "makeBooking",
+            "description": "Make New Booking"
+        },
+        {
+            "name": "cancelBooking",
+            "description": "Cancel Exisiting Booking"
+        },
+        {
+            "name": "editBooking",
+            "description": "Edit Existing Booking"
+        }
+    ],
+    "schemes": [
+        "http"
+    ],
+    "paths": {
+        "/makebooking/?email={email}&booking_slot={booking_slot}&booking_date={booking_date}": {
+            "get": {
+                "summary": "Make new Booking",
+                "description": "Updates order status Generic",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "makeBooking"
+                ],
+                "parameters": [
+                    {
+                        "name": "email",
+                        "in": "path",
+                        "description": "Email Address",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "booking_slot",
+                        "in": "path",
+                        "description": "Booking Slot (5-6 / 6-7 / 7-8)",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "booking_date",
+                        "in": "path",
+                        "description": "Booking Date (YYYY-MM-DD)",
+                        "required": true,
+                        "type": "string",
+                        "formate": "date"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean",
+                                    "default": true
+                                },
+                                "message": {
+                                    "type": "string",
+                                    "description": "Status changed"
+                                },
+                                "data": {
+                                    "type": "string"
+                                },
+                                "currentStatus": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Failure operation",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean",
+                                    "default": false
+                                },
+                                "message": {
+                                    "type": "string",
+                                    "description": "Status not changed"
+                                },
+                                "data": {
+                                    "type": "string"
+                                },
+                                "currentStatus": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/cancelbooking/?email={email}&booking_slot={booking_slot}&booking_date={booking_date}": {
+            "get": {
+                "summary": "Cancel Existing new Booking",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "cancelBooking"
+                ],
+                "parameters": [
+                    {
+                        "name": "email",
+                        "in": "path",
+                        "description": "Email Address",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "booking_slot",
+                        "in": "path",
+                        "description": "Booking Slot (5-6 / 6-7 / 7-8)",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "booking_date",
+                        "in": "path",
+                        "description": "Booking Date (YYYY-MM-DD)",
+                        "required": true,
+                        "type": "string",
+                        "formate": "date"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean",
+                                    "default": true
+                                },
+                                "message": {
+                                    "type": "string",
+                                    "description": "Status changed"
+                                },
+                                "data": {
+                                    "type": "string"
+                                },
+                                "currentStatus": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Failure operation",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean",
+                                    "default": false
+                                },
+                                "message": {
+                                    "type": "string",
+                                    "description": "Status not changed"
+                                },
+                                "data": {
+                                    "type": "string"
+                                },
+                                "currentStatus": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/editbooking/?email={email}&booking_slot={booking_slot}&booking_date={booking_date}&old_booking_slot={old_booking_slot}&old_booking_date={old_booking_date}": {
+            "get": {
+                "summary": "Make new Booking",
+                "description": "Updates order status Generic",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "EditBooking"
+                ],
+                "parameters": [
+                    {
+                        "name": "email",
+                        "in": "path",
+                        "description": "Email Address",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "booking_slot",
+                        "in": "path",
+                        "description": "Booking Slot (5-6 / 6-7 / 7-8)",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "booking_date",
+                        "in": "path",
+                        "description": "Booking Date (YYYY-MM-DD)",
+                        "required": true,
+                        "type": "string",
+                        "formate": "date"
+                    },
+                    {
+                        "name": "old_booking_slot",
+                        "in": "path",
+                        "description": "Old Booking Slot (5-6 / 6-7 / 7-8)",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "old_booking_date",
+                        "in": "path",
+                        "description": "Old Booking Date (YYYY-MM-DD)",
+                        "required": true,
+                        "type": "string",
+                        "formate": "date"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean",
+                                    "default": true
+                                },
+                                "message": {
+                                    "type": "string",
+                                    "description": "Status changed"
+                                },
+                                "data": {
+                                    "type": "string"
+                                },
+                                "currentStatus": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Failure operation",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "success": {
+                                    "type": "boolean",
+                                    "default": false
+                                },
+                                "message": {
+                                    "type": "string",
+                                    "description": "Status not changed"
+                                },
+                                "data": {
+                                    "type": "string"
+                                },
+                                "currentStatus": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
+    },
+    "parameters": {
+        "email": {
+            "name": "email",
+            "in": "path",
+            "description": "Email",
+            "required": true,
+            "type": "string"
+        },
+        "booking_date": {
+            "name": "booking_date",
+            "in": "path",
+            "description": "Booking Date",
+            "required": true,
+            "type": "string"
+        },
+        "old_booking_slot": {
+            "name": "booking_slot",
+            "in": "path",
+            "description": "Booking Slot",
+            "required": true,
+            "type": "string"
+        },
+        "booking_date": {
+            "name": "booking_date",
+            "in": "path",
+            "description": "Booking Date",
+            "required": true,
+            "type": "string"
+        },
+        "old_booking_slot": {
+            "name": "booking_slot",
+            "in": "path",
+            "description": "Booking Slot",
+            "required": true,
+            "type": "string"
+        }
+        
+    },
+    "definitions": {
+        "Success": {
+            "type": "object",
+            "properties": {
+                "success": {
+                    "type": "boolean",
+                    "default": true
+                },
+                "message": {
+                    "type": "string",
+                    "description": "Status changed"
+                },
+                "data": {
+                    "type": "string"
+                },
+                "currentStatus": {
+                    "type": "string"
+                }
+            }
+        },
+        "Failure": {
+            "type": "object",
+            "properties": {
+                "success": {
+                    "type": "boolean",
+                    "default": false
+                },
+                "message": {
+                    "type": "string",
+                    "description": "Status not changed"
+                },
+                "data": {
+                    "type": "string"
+                },
+                "currentStatus": {
+                    "type": "string"
+                }
+            }
+        },
+        "basicData": {
+            "type": "object",
+            "properties": {
+                "trigger_agent": {
+                    "type": "string"
+                },
+                "trigger_commands": {
+                    "type": "integer"
+                },
+                "note_to_history": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

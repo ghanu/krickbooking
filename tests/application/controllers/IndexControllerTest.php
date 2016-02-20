@@ -9,6 +9,12 @@ class IndexControllerTest extends Zend_Test_PHPUnit_ControllerTestCase
         parent::setUp();
     }
 
+    public function testHomePage()
+        {
+            $this->dispatch('/');
+            // ...
+       }
+
 
 }
 
